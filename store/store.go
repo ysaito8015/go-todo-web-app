@@ -3,7 +3,7 @@ package store
 import (
 	"errors"
 
-	"github.com/ysaito8015/go-todo-api/entity"
+	"github.com/ysaito8015/go-todo-web-app/entity"
 )
 
 var (
