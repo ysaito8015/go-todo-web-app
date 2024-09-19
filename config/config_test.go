@@ -11,7 +11,7 @@ func TestNew(t *testing.T) {
 
 	got, err := New()
 	if err != nil {
-		t.Fatalf("cannnot create config: %v", err)
+		t.Fatalf("cannot create config: %v", err)
 	}
 	if got.Port != wantPort {
 		t.Errorf("want %d, but %d", wantPort, got.Port)
