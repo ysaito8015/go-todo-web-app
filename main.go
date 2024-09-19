@@ -52,7 +52,7 @@ func run(ctx context.Context) error {
 	})
 
 	<-ctx.Done() // wait for signal
-	if err := s.Shutdown(ctx); err != nil {
+	if err := s.Shutdown(context.Background()); err != nil {
 		log.Printf("failed to shutdown: %+v", err)
 	}
 	return eg.Wait()
