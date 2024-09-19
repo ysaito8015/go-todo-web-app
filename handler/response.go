@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 )
 
@@ -21,11 +20,11 @@ func RespondJSON(ctx context.Context, w http.ResponseWriter, body any, status in
 		rsp := ErrResponse{
 			Message: http.StatusText(http.StatusInternalServerError),
 		}
+		if err := json.NewEncoder(w).Encode(rsp); err != nil {
+			fmt.Printf("write error response error: %v", err)
+		}
+		return
 	}
-	if err := json.NewEncoder(w).ENcode(rsp); err != nil {
-		fmt.Printf("write error response error: %v", err)
-	}
-	return
 
 	w.WriteHeader(status)
 	if _, err := fmt.Fprintf(w, "%s", bodyBytes); err != nil {
