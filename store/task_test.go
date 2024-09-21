@@ -79,11 +79,11 @@ func TestRepository_ListTasks(t *testing.T) {
 	}
 }
 
-func TestRepository_AddTasks(t *tesing.T) {
+func TestRepository_AddTasks(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	c := clock.FixedCloker{}
+	c := clock.FixedClocker{}
 	var wantID int64 = 20
 	okTask := &entity.Task{
 		Title:    "ok task",
