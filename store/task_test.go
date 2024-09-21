@@ -103,7 +103,7 @@ func TestRepository_AddTasks(t *tesing.T) {
 		WillReturnResult(sqlmock.NewResult(wantID, 1))
 
 	xdb := sqlx.NewDb(db, "mysql")
-	r := &Repository{[Clocker: c]}
+	r := &Repository{Clocker: c}
 	if err := r.AddTask(ctx, xdb, okTask); err != nil {
 		t.Fatalf("want no error, but got %v", err)
 	}
