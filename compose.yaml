@@ -11,7 +11,7 @@ services:
       TODO_DB_PORT: 3306
       TODO_DB_USER: todo
       TODO_DB_PASSWORD: todo
-      TODO_DB_DATABASE: todo
+      TODO_DB_NAME: todo
     volumes:
       - .:/app
     ports:
@@ -24,7 +24,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_USER: todo
       MYSQL_PASSWORD: todo
-      MYSQL_DB_NAME: todo
+      MYSQL_DATABASE: todo
     volumes:
       - todo-db-data:/var/lib/mysql
       - ${PWD}/_tools/mysql/conf.d:/etc/mysql/conf.d:cached
