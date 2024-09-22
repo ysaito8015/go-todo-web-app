@@ -1,9 +1,9 @@
 services:
   app:
     image: gotodo
-    build:
-      args:
-        - target=dev
+    depends_on:
+      todo-db:
+        condition: service_started
     environment:
       TODO_ENV: dev
       PORT: 8080
@@ -16,6 +16,8 @@ services:
       - .:/app
     ports:
       - "18000:8080"
+    networks:
+      - todo-network
   todo-db:
     image: mysql:8.4.2
     platform: linux/amd64
@@ -30,5 +32,10 @@ services:
       - ${PWD}/_tools/mysql/conf.d:/etc/mysql/conf.d:cached
     ports:
       - "33306:3306"
+    networks:
+      - todo-network
 volumes:
   todo-db-data:
+networks:
+  todo-network:
+    driver: bridge
