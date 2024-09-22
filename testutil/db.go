@@ -19,7 +19,7 @@ func OpenDBForTest(t *testing.T) *sqlx.DB {
 		t.Fatal(err)
 	}
 
-	port := cfg.DBPort
+	port := 33306
 	if _, defined := os.LookupEnv("CI"); defined {
 		port = 3306
 	}
